@@ -44,7 +44,7 @@ Lib.build({}, function(err, result) {
         name: Util.format('%s/contributors', req.query.full_name)
       }),
     }, function(err, result) {
-      result.repos.created_at = getDtFormatted(result.repos.created_at);
+      result.repos.created_at = getDtFormatted(result.repos && result.repos.created_at);
       return res.render('detail', result);
     });
 
@@ -58,5 +58,5 @@ Lib.build({}, function(err, result) {
 });
 
 function getDtFormatted(input) {
-  return dateFormat(input, "mm-dd-yyyy");
+  return input && dateFormat(input, "mm-dd-yyyy");
 }

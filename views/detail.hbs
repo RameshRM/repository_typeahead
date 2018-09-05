@@ -26,7 +26,31 @@
     <div class="">
       <Date>Created {{repos.created_at}}</Date>
     </div>
-    {{contributors}}
+    <hr>
+    <h2>Contributions</h2>
+
+    <ul class="list-group">
+      {{#each contributors}}
+        <li class="list-group-item">
+          <div class="float-clear" style='margin:0px;padding:0px'>
+            <div class="float-left">
+              <a href='{{this.url}}'>
+              <div class="repo_avatar_box" style="float:left;width;120px">
+                <img alt="" src='{{this.avatar_url}}' style='max-width:99%'></img>
+              </div>
+              <span style='position:absolute;top:0%;margin:1em'>
+              {{this.login}}
+              <label style='font-size:12px;color:#333;font-weight:normal;display:block;padding-top:1em'>{{this.contributions}} Contributions</label>
+              </span>
+
+            </a>
+            </div>
+          </div>
+
+        </li>
+      {{/each}}
+    </ul>
+
 
   </div>
 </a>
