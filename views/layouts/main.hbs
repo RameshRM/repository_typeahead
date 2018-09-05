@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>jQuery autoComplete Plugin</title>
+  <meta name="description" content="A lightweight autocomplete plugin for jQuery.">
+  <link rel="shortcut icon" href="https://pixabay.com/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      min-width: 320px;
+      color: #777;
+    }
+
+    html,
+    button,
+    input,
+    select,
+    textarea,
+    .pure-g [class *="pure-u"] {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.02em;
+    }
+
+    p,
+    td {
+      line-height: 1.5;
+    }
+
+    ul {
+      padding: 0 0 0 20px;
+    }
+
+    th {
+      background: #eee;
+      white-space: nowrap;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: .9em;
+      font-weight: normal;
+      border-right: 1px solid #fff;
+    }
+
+    td:first-child {
+      white-space: nowrap;
+      color: #008000;
+      width: 1%;
+      font-style: italic;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #4b4b4b;
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 300;
+      margin: 0 0 1.2em;
+    }
+
+    h1 {
+      font-size: 4.5em;
+      color: #1f8dd6;
+      margin: 0 0 .4em;
+    }
+
+    h2 {
+      font-size: 2em;
+      color: #636363;
+    }
+
+    h3 {
+      font-size: 1.8em;
+      color: #4b4b4b;
+      margin: 1.8em 0 .8em
+    }
+
+    h4 {
+      font: bold 1em sans-serif;
+      color: #636363;
+      margin: 4em 0 1em;
+    }
+
+    a {
+      color: #4e99c7;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p,
+    pre {
+      margin: 0 0 1.2em;
+    }
+    date{
+      font-size:small;
+      color:#adadad;
+      padding:8px;font-weight:normal;
+    }
+
+    ::selection {
+      color: #fff;
+      background: #328efd;
+    }
+
+    ::-moz-selection {
+      color: #fff;
+      background: #328efd;
+    }
+
+    @media (max-width:480px) {
+      h1 {
+        font-size: 3em;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      h3 {
+        font-size: 1.5em;
+      }
+      td:first-child {
+        white-space: normal;
+      }
+    }
+
+    .inline-code {
+      padding: 1px 5px;
+      background: #eee;
+      border-radius: 2px;
+    }
+
+    pre {
+      padding: 15px 10px;
+      font-size: .9em;
+      color: #555;
+      background: #edf3f8;
+    }
+
+    pre i {
+      color: #aaa;
+    }
+
+    /* comments */
+
+    pre b {
+      font-weight: normal;
+      color: #cf4b25;
+    }
+
+    /* strings */
+
+    pre em {
+      color: #0c59e9;
+    }
+
+    /* numeric */
+
+    /* Pure CSS */
+
+    .pure-button {
+      margin: 5px 0;
+      text-decoration: none !important;
+    }
+
+    .button-lg {
+      margin: 5px 0;
+      padding: .65em 1.6em;
+      font-size: 105%;
+    }
+
+    .repo-title {
+      text-transform: capitalize;
+      margin-left: 5px;
+      font-weight: bold;
+      color: #333;
+      float:left
+    }
+
+    .repo_avatar_box {
+      background-color: #fdfdfd;
+      max-width: 120px;
+      display: block;
+      border: solid 1px #fff;
+      border-radius: 3px;
+      float:left;min-width:120px;
+    }
+
+    .repo_avatar {
+      width: 99%;
+      margin:1px;
+    }
+    .line-item{
+      margin-top:8px;
+      margin-bottom:8px;
+    }
+    input[type="text"] {
+      border-radius: 0 !important;
+    }
+  </style>
+  <link rel="stylesheet" href="/static/css/jquery.auto-complete.css">
+</head>
+
+<body>
+  <div style="max-width:900px;padding:0 10px;margin:40px auto;text-align:center">
+    <h1><a href='/'>autoComplete</a></h1>
+    <h2>An extremely lightweight completion Github .</h2>
+    <a style="margin:5px 0" href="https://github.com/Pixabay/jQuery-autoComplete" class="pure-button button-lg">View on GitHub</a>
+    <section class="custom-padding">
+        {{{body}}}
+    </section>
+  </div>
+
+
+  <div id="fb-root"></div>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="/static/js/jquery.auto-complete.js"></script>
+  <script>
+    $(function() {
+      var xhr;
+      $('#advanced-demo').autoComplete({
+        minChars: 0,
+        source: function(term, response) {
+          if (!term || term.length <= 0) {
+            return;
+          }
+          term = term.toLowerCase();
+          try {
+            xhr.abort();
+          } catch (e) {}
+          return xhr = $.getJSON('/search/', {
+            keywords: term
+          }, function(data) {
+            response(data);
+          });
+        },
+        renderItem: function(item, search) {
+          search = search.replace(/[-\/\\^$*+?.()|[\]{}]/gi, '\\$&');
+          return '<div class="autocomplete-suggestion line-item" data-name="' + item.name + '" data-full_name="' + item.full_name + '" data-val="' + search + '"><a href="/'+item.name +'"><div class="repo_avatar_box"><img class="repo_avatar" src="' + item.avatar_url +
+            '"></div><span class="repo-title">' +
+            item.name.replace(re, "<b>$1</b>") + '</span></a></div>';
+          return;
+
+          var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+          return '<div class="autocomplete-suggestion" data-langname="' + item[0] + '" data-lang="' + item[1] + '" data-val="' + search + '"><img src="img/' + item[1] + '.png"> ' + item[0].replace(re, "<b>$1</b>") + '</div>';
+        },
+        onSelect: function(e, term, item) {
+          window.location.href = item.data('name') + '?full_name='+item.data('full_name');
+          return false;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

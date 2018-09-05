@@ -1,0 +1,32 @@
+<a href="https://github.com/{{full_name}}">
+  <div class="repo_avatar_box" style="float:left;width;120px">
+    <img alt="" src='{{repos.owner.avatar_url}}' style='border-radius:50%;max-width:99%'></img>
+
+  </div>
+  <div class="repo-title" style='text-align:left'>
+    <div style='position:relative'>
+      <h2>{{repos.name}}</h2>
+      <div style='position:absolute;left:110px;top:0px;color:#eeddaa;position: absolute;left: 110px;top: 0px;color: darkgreen;font-size:small'>{{repos.owner.type}}</div>
+    </div>
+    <div style='color:#333;font-size:normal;font-weight:normal'>{{repos.description}}</div>
+    <div class="">
+
+
+      <div class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{repos.stargazers_count}} Stars
+      </div>
+      <div class="btn btn-default btn-lg">
+        <a href="{{repos.stargazers_url}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{repos.watchers_count}} Watchers</a>
+      </div>
+
+      <div class="btn btn-default btn-lg">
+        <a href="{{repos.issues_url}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>  {{repos.open_issues_count}} Issues</a>
+      </div>
+    </div>
+    <div class="">
+      <Date>Created {{repos.created_at}}</Date>
+    </div>
+    {{contributors}}
+
+  </div>
+</a>
