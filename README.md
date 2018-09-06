@@ -39,24 +39,24 @@ Summary of implementation.
 
 1. Entry point is `index.js` at the root directory.
 
-  [-] Build the Data Set with Github api
+  - Build the Data Set with Github api
 
-  [-] Download the Repos JSON from https://api.github.com/repositories
+  - Download the Repos JSON from https://api.github.com/repositories
 
-  [-] Build a https://en.wikipedia.org/wiki/Trie , AutoComplete | Typeahead matches with `Trie`
+  - Build a https://en.wikipedia.org/wiki/Trie , AutoComplete | Typeahead matches with `Trie`
 
 2. **Http  Express** Server is connected with the Web
 
-    [-] Server Starts on port 8080
+    - Server Starts on port 8080
 
-    [-] Exposes Search API to return JSON payload
+    - Exposes Search API to return JSON payload
 
 
 ## Routes
 
   `/`: Home Page or Landing Page, which exposes a SearchBox
 
-  '/:name': Detail Page of the Repository
+  `/:name`: Detail Page of the Repository
 
   `/search/?keywords=c`: Search API with keywords
 
