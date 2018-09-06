@@ -58,5 +58,5 @@ Lib.build({}, function(err, result) {
 });
 
 function getDtFormatted(input) {
-  return input && dateFormat(input, "mm-dd-yyyy");
+  return input && dateFormat(input, 'mm-dd-yyyy');
 }

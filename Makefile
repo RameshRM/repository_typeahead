@@ -3,7 +3,7 @@ ESLINT = ./node_modules/.bin/eslint
 ISTANBUL = ./node_modules/.bin/istanbul
 BASE = .
 
-all: lint test
+all: lint test cover
 
 test:
 	@NODE_ENV= ./node_modules/.bin/mocha \

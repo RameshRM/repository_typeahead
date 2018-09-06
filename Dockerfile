@@ -14,7 +14,6 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 
-ENV DEBUG=combo-order
 ENV GIT_REPOS_API='https://api.github.com/repositories'
 ENV GET_REPO_API='https://api.github.com/repos'
 ENV DATASET_PATH=$(pwd)/.dataset
