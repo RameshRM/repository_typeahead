@@ -8,6 +8,8 @@ RUN npm config set registry https://registry.npmjs.org
 
 RUN npm cache clean
 
+RUN make all
+
 RUN npm install
 
 COPY . /usr/src/app
